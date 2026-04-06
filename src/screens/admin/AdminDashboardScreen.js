@@ -13,7 +13,7 @@ export default function AdminDashboardScreen() {
   const load = useCallback(async () => {
     try {
       const res = await api.get('/admin_analytics.php');
-      setData(res.data);
+      if (res.data.success) setData(res.data.data);
     } catch (e) { console.error(e); }
     finally { setLoading(false); setRefreshing(false); }
   }, []);
@@ -54,8 +54,8 @@ export default function AdminDashboardScreen() {
       {!!data?.announcements?.length && (
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Latest Announcements</Text>
-          {data.announcements.map((a, i) => (
-            <View key={i} style={styles.annoCard}>
+          {data.announcements.map((a) => (
+            <View key={String(a.announcement_id ?? a.title)} style={styles.annoCard}>
               <Text style={styles.annoTitle}>{a.title}</Text>
               <Text style={styles.annoBody}>{a.message}</Text>
             </View>

@@ -83,7 +83,7 @@ export default function EmployeeManagementScreen() {
 
       <FlatList
         data={filtered}
-        keyExtractor={(item) => String(item.employee_id)}
+        keyExtractor={(item, i) => String(item.employee_id ?? i)}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); load(); }} />}
         contentContainerStyle={{ padding: 16, paddingTop: 4 }}
         renderItem={({ item }) => (

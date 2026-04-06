@@ -76,7 +76,7 @@ export default function DepartmentScreen() {
 
       <FlatList
         data={depts}
-        keyExtractor={(item) => String(item.department_id)}
+        keyExtractor={(item, i) => String(item.department_id ?? i)}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={() => { setRefreshing(true); load(); }} />}
         contentContainerStyle={{ padding: 16 }}
         renderItem={({ item }) => (
