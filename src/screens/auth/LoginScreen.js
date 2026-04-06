@@ -26,7 +26,8 @@ export default function LoginScreen({ navigation }) {
         Alert.alert('Login Failed', result.message || 'Invalid credentials.');
       }
     } catch (e) {
-      Alert.alert('Error', 'Could not connect to the server. Check your internet connection.');
+      const detail = e?.code ? ` (${e.code})` : '';
+      Alert.alert('Error', `Could not connect to the server.${detail}\n\n${e?.message ?? ''}`);
     } finally {
       setLoading(false);
     }

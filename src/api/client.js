@@ -26,7 +26,13 @@ api.interceptors.request.use(async (config) => {
 
 api.interceptors.response.use(
   (res) => res,
-  (error) => Promise.reject(error)
+  (error) => {
+    const msg = error?.message ?? 'Unknown error';
+    const code = error?.code ?? '';
+    const url = error?.config?.url ?? '';
+    console.error(`[API Error] ${code} ${msg} | URL: ${url}`);
+    return Promise.reject(error);
+  }
 );
 
 export default api;
