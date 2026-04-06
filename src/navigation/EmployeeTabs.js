@@ -7,6 +7,7 @@ import AttendanceScreen  from '../screens/employee/AttendanceScreen';
 import LeaveScreen       from '../screens/employee/LeaveScreen';
 import PayslipsScreen    from '../screens/employee/PayslipsScreen';
 import ProfileScreen     from '../screens/employee/ProfileScreen';
+import MyQRCodeScreen    from '../screens/employee/MyQRCodeScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +25,7 @@ export default function EmployeeTabs() {
     >
       <Tab.Screen name="Dashboard"  component={DashboardScreen}  options={{ tabBarIcon: icon('home-outline'),         tabBarLabel: 'Home' }} />
       <Tab.Screen name="Attendance" component={AttendanceScreen} options={{ tabBarIcon: icon('time-outline'),         tabBarLabel: 'Attendance' }} />
+      <Tab.Screen name="MyQR"       component={MyQRCodeScreen}   options={{ tabBarIcon: icon('qr-code-outline'),      tabBarLabel: 'My QR' }} />
       <Tab.Screen name="Leave"      component={LeaveScreen}      options={{ tabBarIcon: icon('calendar-outline'),     tabBarLabel: 'Leave' }} />
       <Tab.Screen name="Payslips"   component={PayslipsScreen}   options={{ tabBarIcon: icon('document-text-outline'), tabBarLabel: 'Payslips' }} />
       <Tab.Screen name="Profile"    component={ProfileScreen}    options={{ tabBarIcon: icon('person-outline'),       tabBarLabel: 'Profile' }} />

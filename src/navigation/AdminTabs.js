@@ -9,6 +9,7 @@ import PayrollScreen             from '../screens/admin/PayrollScreen';
 import DepartmentScreen          from '../screens/admin/DepartmentScreen';
 import AdminSettingsScreen       from '../screens/admin/AdminSettingsScreen';
 import ProfileScreen             from '../screens/employee/ProfileScreen';
+import ScanQRScreen              from '../screens/shared/ScanQRScreen';
 
 const Tab = createBottomTabNavigator();
 const icon = (name) => ({ color, size }) => <Ionicons name={name} size={size} color={color} />;
@@ -22,8 +23,9 @@ export default function AdminTabs() {
         headerShown: false,
       }}
     >
-      <Tab.Screen name="Dashboard"  component={AdminDashboardScreen}     options={{ tabBarIcon: icon('home-outline'),          tabBarLabel: 'Home' }} />
+      <Tab.Screen name="Dashboard"   component={AdminDashboardScreen}     options={{ tabBarIcon: icon('home-outline'),          tabBarLabel: 'Home' }} />
       <Tab.Screen name="Employees"  component={EmployeeManagementScreen}  options={{ tabBarIcon: icon('people-outline'),        tabBarLabel: 'Employees' }} />
+      <Tab.Screen name="ScanQR"     component={ScanQRScreen}              options={{ tabBarIcon: icon('scan-outline'),          tabBarLabel: 'Scan QR' }} />
       <Tab.Screen name="Payroll"    component={PayrollScreen}             options={{ tabBarIcon: icon('cash-outline'),          tabBarLabel: 'Payroll' }} />
       <Tab.Screen name="Departments" component={DepartmentScreen}         options={{ tabBarIcon: icon('business-outline'),      tabBarLabel: 'Depts' }} />
       <Tab.Screen name="Settings"   component={AdminSettingsScreen}       options={{ tabBarIcon: icon('settings-outline'),      tabBarLabel: 'Settings' }} />
