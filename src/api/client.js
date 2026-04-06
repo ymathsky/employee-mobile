@@ -13,12 +13,12 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// Attach PHPSESSID as Cookie header so PHP sessions work on mobile
+// Attach session token as X-Session-Token header so PHP can restore the session
 api.interceptors.request.use(async (config) => {
   try {
     const sessionId = await SecureStore.getItemAsync('phpsessid');
     if (sessionId) {
-      config.headers['Cookie'] = `PHPSESSID=${sessionId}`;
+      config.headers['X-Session-Token'] = sessionId;
     }
   } catch (_) {}
   return config;
